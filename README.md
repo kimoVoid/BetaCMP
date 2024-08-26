@@ -1,5 +1,5 @@
 # Beta CMP mod for b1.8.1
-This is a mod that was made for the Slimeless Tech Hub. It uses Ornithe b1.8.1 to run and acts similarly to mods such as Carpet.
+This is a mod that was made for the [Slimeless Tech Hub](https://discord.gg/a3JEeAyZR4). It uses Ornithe b1.8.1 to run and acts similarly to mods such as Carpet.
 
 ## Using
 You need to grab a copy of the [Ornithe installer](https://ornithemc.net/) and follow the steps below.
@@ -38,3 +38,6 @@ You can set rules with the `/rule` command, which will print all available subco
 * Acts similarly to redstone blocks
 * Type: `boolean`
 * Default: `false`
+
+## Credits
+This mod is based on [Tapestry](https://github.com/Nullspace-MC/Tapestry), which is a similar mod developed for release 1.7.2.
