@@ -38,3 +38,6 @@ You can set rules with the `/rule` command, which will print all available subco
 * Acts similarly to redstone blocks
 * Type: `boolean`
 * Default: `false`
+
+## Credits
+This mod is based on [Tapestry](https://github.com/Nullspace-MC/Tapestry), which is a similar mod developed for release 1.7.2.
