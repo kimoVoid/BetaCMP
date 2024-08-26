@@ -3,19 +3,26 @@ package me.kimovoid.betacmp.settings;
 public class Settings {
 
     @Rule(
-            desc = "Disables detector rail random ticking",
+            desc = "Disables the random ticking of detector rails",
             category = {RuleCategory.CREATIVE, RuleCategory.FEATURE}
     )
     @RuleDefaults.Creative
-    public static boolean disableRailTick = false;
+    public static boolean disableRailRandomTick = false;
 
     @Rule(
-            desc = "Makes all detector rails powered by default",
-            extra = "Acts similarly to redstone blocks",
+            desc = "Makes detector rails activated by default when placed by a player",
+            extra = "This should be used together with `disableRailRandomTick` so that detector rails cannot" +
+				"deactivate randomly",
             category = {RuleCategory.CREATIVE, RuleCategory.FEATURE}
     )
     @RuleDefaults.Creative
-    public static boolean lazyRails = false;
+    public static boolean placeActivatedRails = false;
+
+	// @Rule(
+	// 		desc = "Enables instant execution of scheduled ticks for liquids",
+	// 		category = {RuleCategory.CREATIVE, RuleCategory.FEATURE}
+	// )
+	// public static boolean instantLiquids = false;
 
     static class PositiveValidator extends Validator<Integer> {
         @Override

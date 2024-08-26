@@ -9,6 +9,7 @@
   "mixins": [
     "fix.ConnectionMixin",
     "rails.DetectorRailBlockMixin",
+    "rails.WorldMixin",
     "fix.MinecraftServerMixin",
     "fix.ServerLoginNetworkHandler$1Mixin",
     "fix.ServerLoginNetworkHandlerMixin",

@@ -28,14 +28,14 @@ You can set rules with the `/rule` command, which will print all available subco
 <br>The easiest way to change a rule is `/rule <rule> <value>`.
 <br>If you want to change it permanently, use `/rule setDefault <rule> <value>`.
 
-`disableRailTick`
-* Disables detector rail random ticking
+`disableRailRandomTick`
+* Disables the random ticking of detector rails.
 * Type: `boolean`
 * Default: `false`
 
-`lazyRails`
-* Makes all detector rails powered by default
-* Acts similarly to redstone blocks
+`railActivatedOnPlaced`
+* Makes detector rails activated by default when placed by a player.
+* This should be used together with `disableRailRandomTick` so that detector rails cannot deactivate randomly. 
 * Type: `boolean`
 * Default: `false`
 
