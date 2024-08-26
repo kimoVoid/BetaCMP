@@ -1,0 +1,25 @@
+{
+	"schemaVersion": 1,
+	"id": "betacmp",
+	"version": "${version}",
+	"name": "BetaCMP",
+	"description": "b1.8.1 CMP utility mod",
+	"authors": [
+		"kimoVoid"
+	],
+	"license": "MIT",
+	"environment": "server",
+	"entrypoints": {
+		"init": [
+			"me.kimovoid.betacmp.BetaCMP"
+		]
+	},
+	"mixins": [
+		"betacmp.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.21",
+		"minecraft": "1.0.0-beta.8.1",
+		"osl-entrypoints": ">=0.4.0"
+	}
+}
