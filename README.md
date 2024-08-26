@@ -1,5 +1,5 @@
 # Beta CMP mod for b1.8.1
-This is a mod that was made for the Slimeless Tech Hub. It uses Ornithe b1.8.1 to run and acts similarly to mods such as Carpet.
+This is a mod that was made for the [Slimeless Tech Hub](https://discord.gg/a3JEeAyZR4). It uses Ornithe b1.8.1 to run and acts similarly to mods such as Carpet.
 
 ## Using
 You need to grab a copy of the [Ornithe installer](https://ornithemc.net/) and follow the steps below.
