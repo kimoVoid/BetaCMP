@@ -12,8 +12,6 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 @Mixin(DetectorRailBlock.class)
 public abstract class DetectorRailBlockMixin extends RailBlock {
 
-    @Shadow protected abstract void updateOutputState(World world, int x, int y, int z, int metadata);
-
     protected DetectorRailBlockMixin(int id, int sprite, boolean alwaysStraight) {
         super(id, sprite, alwaysStraight);
     }
