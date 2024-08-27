@@ -1,4 +1,4 @@
-package me.kimovoid.betacmp.mixin.rails;
+package me.kimovoid.betacmp.mixin.blocktick;
 
 import me.kimovoid.betacmp.settings.Settings;
 import net.minecraft.block.DetectorRailBlock;

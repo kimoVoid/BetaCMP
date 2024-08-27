@@ -39,5 +39,15 @@ You can set rules with the `/rule` command, which will print all available subco
 * Type: `boolean`
 * Default: `false`
 
+`disableLiquidRandomTick`
+* Disables the random ticking of liquid blocks.
+* Type: `boolean`
+* Default: `false`
+
+`liquidInstantTick`
+* Enables instant execution of ticks scheduled by liquid blocks.
+* Type: `boolean`
+* Default: `false`
+
 ## Credits
 This mod is based on [Tapestry](https://github.com/Nullspace-MC/Tapestry), which is a similar mod developed for release 1.7.2.
