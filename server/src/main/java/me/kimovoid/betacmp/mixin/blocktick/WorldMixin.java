@@ -5,6 +5,7 @@ import me.kimovoid.betacmp.settings.Settings;
 import net.minecraft.block.Block;
 import net.minecraft.block.DetectorRailBlock;
 import net.minecraft.block.LiquidBlock;
+import net.minecraft.world.ScheduledTick;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -39,8 +40,8 @@ public class WorldMixin {
 			target = "Lnet/minecraft/world/World;doTicksImmediately:Z"
 		)
 	)
-	private boolean makeTicksInstant(World world, @Local(name = "blockId") int blockId) {
-		Block block = Block.BY_ID[blockId];
+	private boolean makeTicksInstant(World world, @Local ScheduledTick var6) {
+		Block block = Block.BY_ID[var6.blockId];
 
 		return world.doTicksImmediately || (block instanceof LiquidBlock && Settings.liquidInstantTick);
 	}
