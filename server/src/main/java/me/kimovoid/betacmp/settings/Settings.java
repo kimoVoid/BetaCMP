@@ -1,7 +1,6 @@
 package me.kimovoid.betacmp.settings;
 
 public class Settings {
-
     @Rule(
             desc = "Disables the random ticking of detector rails",
             category = {RuleCategory.CREATIVE, RuleCategory.FEATURE}
@@ -18,11 +17,18 @@ public class Settings {
     @RuleDefaults.Creative
     public static boolean placeActivatedRails = false;
 
-	// @Rule(
-	// 		desc = "Enables instant execution of scheduled ticks for liquids",
-	// 		category = {RuleCategory.CREATIVE, RuleCategory.FEATURE}
-	// )
-	// public static boolean instantLiquids = false;
+	@Rule(
+		desc = "Disables the random ticking of liquids",
+		category = {RuleCategory.CREATIVE, RuleCategory.FEATURE}
+	)
+	@RuleDefaults.Creative
+	public static boolean disableLiquidRandomTick = false;
+
+	@Rule(
+			desc = "Enables instant execution of scheduled ticks for liquids",
+			category = {RuleCategory.CREATIVE, RuleCategory.FEATURE}
+	)
+	public static boolean liquidInstantTick = false;
 
     static class PositiveValidator extends Validator<Integer> {
         @Override
