@@ -3,6 +3,10 @@ package me.kimovoid.betacmp.command;
 import me.kimovoid.betacmp.BetaCMP;
 import me.kimovoid.betacmp.command.exception.CommandException;
 import me.kimovoid.betacmp.command.exception.InvalidNumberException;
+import net.minecraft.block.Block;
+import net.minecraft.server.entity.living.player.ServerPlayerEntity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 
 public abstract class Command implements ICommand {
 
@@ -116,5 +120,28 @@ public abstract class Command implements ICommand {
 
 			return var7;
 		}
+	}
+
+	public static BlockPos parseBlockPos(ServerPlayerEntity source, String[] args, int startIdx) {
+		int x = MathHelper.floor(source.x);
+		int y = MathHelper.floor(source.y);
+		int z = MathHelper.floor(source.z);
+		x = MathHelper.floor(parseCoordinate(x, args[startIdx]));
+		y = MathHelper.floor(parseCoordinate(y, args[startIdx + 1], 0, 255));
+		z = MathHelper.floor(parseCoordinate(z, args[startIdx + 2]));
+		return new BlockPos(x, y, z);
+	}
+
+	public static int nameToBlockId(String n) {
+		String name = n.replace("_", "");
+		for (int i = 0; i < Block.BY_ID.length; i++) {
+			if (Block.BY_ID[i] == null)
+				continue;
+			String translatedName = Block.BY_ID[i].getName().replace(" ", ""); // Remove spaces
+			if (translatedName.equalsIgnoreCase(name)) {
+				return i;
+			}
+		}
+		throw new CommandException("Invalid block: " + n);
 	}
 }

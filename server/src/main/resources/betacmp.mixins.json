@@ -7,19 +7,16 @@
     "defaultRequire": 1
   },
   "mixins": [
+    "access.InteractionManagerAccessor",
+    "blocktick.DetectorRailBlockMixin",
+    "blocktick.WorldMixin",
+    "clonecommand.WorldMixin",
+    "command.CommandHandlerMixin",
+    "command.ServerPlayNetworkHandlerMixin",
+    "fakeplayer.ServerPlayNetworkHandlerMixin",
     "fix.ConnectionMixin",
     "fix.MinecraftServerMixin",
     "fix.ServerLoginNetworkHandler$1Mixin",
-    "fix.ServerLoginNetworkHandlerMixin",
-
-    "fakeplayer.ServerPlayNetworkHandlerMixin",
-
-    "access.InteractionManagerAccessor",
-
-    "command.CommandHandlerMixin",
-    "command.ServerPlayNetworkHandlerMixin",
-
-    "blocktick.WorldMixin",
-    "blocktick.DetectorRailBlockMixin"
+    "fix.ServerLoginNetworkHandlerMixin"
   ]
 }

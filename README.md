@@ -12,16 +12,17 @@ You need to grab a copy of the [Ornithe installer](https://ornithemc.net/) and f
 7. You're done! :)
 
 ## Commands
-| Command                               | Description                                         |
-|---------------------------------------|-----------------------------------------------------|
-| `clear`                               | Clears your inventory                               |
-| `give <item name/id> <amount> [meta]` | Enhanced give command                               |
-| `ping [player]`                       | View ping (half works due to b1.8.1 pinging slowly) |
-| `player <name> <action>`              | Fake player command, similar to Carpet mod's        |
-| `rule [args...]`                      | View and set rules (more info below)                |
-| `setblock <x> <y> <z> <block> [meta]` | Set block backport                                  |
-| `summon <entity> [x] [y] [z]`         | Summon backport                                     |
-| `toggledownfall`                      | Toggle weather                                      |
+| Command          | Description                                         |
+|------------------|-----------------------------------------------------|
+| `clear`          | Clears your inventory                               |
+| `clone`          | Clone backport                                      |
+| `give`           | Enhanced give command                               |
+| `ping`           | View ping (half works due to b1.8.1 pinging slowly) |
+| `player`         | Fake player command, similar to Carpet mod's        |
+| `rule`           | View and set rules (more info below)                |
+| `setblock`       | Set block backport                                  |
+| `summon`         | Summon backport                                     |
+| `toggledownfall` | Toggle weather                                      |
 
 ## Rules
 You can set rules with the `/rule` command, which will print all available subcommands.
@@ -38,14 +39,9 @@ You can set rules with the `/rule` command, which will print all available subco
 * Type: `boolean`
 * Default: `false`
 
-`disableLiquidRandomTick`
-* Disables the random ticking of liquid blocks.
-* Type: `boolean`
-* Default: `false`
-
 `railActivatedOnPlaced`
 * Makes detector rails activated by default when placed by a player.
-* This should be used together with `disableRailRandomTick` so that detector rails cannot deactivate randomly.
+* This should be used together with `disableRailRandomTick` so that detector rails cannot deactivate randomly. 
 * Type: `boolean`
 * Default: `false`
 

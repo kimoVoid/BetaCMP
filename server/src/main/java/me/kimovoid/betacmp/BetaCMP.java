@@ -37,6 +37,7 @@ public class BetaCMP implements ModInitializer {
 
 	public static void registerCommands() {
 		registerCommand(new ClearCommand());
+		registerCommand(new CloneCommand());
 		registerCommand(new GiveCommand());
 		registerCommand(new PingCommand());
 		registerCommand(new PlayerCommand());
