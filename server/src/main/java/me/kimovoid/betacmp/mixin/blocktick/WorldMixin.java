@@ -2,9 +2,7 @@ package me.kimovoid.betacmp.mixin.blocktick;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import me.kimovoid.betacmp.settings.Settings;
-import net.minecraft.block.Block;
-import net.minecraft.block.DetectorRailBlock;
-import net.minecraft.block.LiquidBlock;
+import net.minecraft.block.*;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -25,8 +23,10 @@ public class WorldMixin {
 		Block block,
 		World world, int x, int y, int z, Random random
 	) {
-		if ((!Settings.disableRailRandomTick || !(block instanceof DetectorRailBlock))
-			&& (!Settings.disableLiquidRandomTick || !(block instanceof LiquidBlock))) {
+		// TODO: Consider reworking this if we want to extend this feature to more blocks.
+		if ((!Settings.disableRailRandomTick        || !(block instanceof DetectorRailBlock))
+			&& (!Settings.disableLiquidRandomTick   || !(block instanceof LiquidBlock))
+			&& (!Settings.disableRedstoneRandomTick || !(block instanceof RedstoneTorchBlock))) {
 
 			block.tick(world, x, y, z, random);
 		}
@@ -42,6 +42,10 @@ public class WorldMixin {
 	private boolean makeTicksInstant(World world, @Local(name = "blockId") int blockId) {
 		Block block = Block.BY_ID[blockId];
 
-		return world.doTicksImmediately || (block instanceof LiquidBlock && Settings.liquidInstantTick);
+		// TODO: Consider reworking this if we want to extend this feature to more blocks.
+		return world.doTicksImmediately
+			|| (Settings.liquidInstantTick && block instanceof LiquidBlock)
+			|| (Settings.redstoneInstantTick && (block instanceof RedstoneTorchBlock
+												 || block instanceof RepeaterBlock));
 	}
 }

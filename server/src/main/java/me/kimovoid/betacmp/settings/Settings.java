@@ -24,11 +24,25 @@ public class Settings {
 	@RuleDefaults.Creative
 	public static boolean disableLiquidRandomTick = false;
 
+	// TODO: Consider extending this to buttons and pressure plates.
+	@Rule(
+		desc = "Disables the random ticking of redstone torches",
+		category = {RuleCategory.CREATIVE, RuleCategory.FEATURE}
+	)
+	public static boolean disableRedstoneRandomTick = false;
+
 	@Rule(
 			desc = "Enables instant execution of scheduled ticks for liquids",
 			category = {RuleCategory.CREATIVE, RuleCategory.FEATURE}
 	)
 	public static boolean liquidInstantTick = false;
+
+	// TODO: Consider extending this to buttons and pressure plates.
+	@Rule(
+		desc = "Enables instant execution of scheduled ticks for repeaters and redstone torches",
+		category = {RuleCategory.CREATIVE, RuleCategory.FEATURE}
+	)
+	public static boolean redstoneInstantTick = false;
 
     static class PositiveValidator extends Validator<Integer> {
         @Override
