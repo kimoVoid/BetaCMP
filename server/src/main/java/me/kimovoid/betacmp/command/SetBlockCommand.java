@@ -49,7 +49,7 @@ public class SetBlockCommand extends Command {
 
         int data = 0;
         if (args.length >= 5) {
-            data = parseInt(args[4], 0, 15);
+            data = parseInt(args[4]);
         }
 
         if (!player.world.isChunkLoaded(x, y, z)) {
@@ -62,18 +62,5 @@ public class SetBlockCommand extends Command {
             sendSuccess(source.getSourceName(), String.format("Set block at position [%s, %s, %s] to %s%s",
                     x, y, z, Block.BY_ID[blockId].getName(), data != 0 ? ":" + data : ""));
         }
-    }
-
-    public static int nameToBlockId(String n) {
-        String name = n.replace("_", "");
-        for (int i = 0; i < Block.BY_ID.length; i++) {
-            if (Block.BY_ID[i] == null)
-                continue;
-            String translatedName = Block.BY_ID[i].getName().replace(" ", ""); // Remove spaces
-            if (translatedName.equalsIgnoreCase(name)) {
-                return i;
-            }
-        }
-        return -1;
     }
 }

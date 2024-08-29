@@ -24,6 +24,21 @@ public class Settings {
 	@RuleDefaults.Creative
 	public static boolean disableLiquidRandomTick = false;
 
+    @Rule(
+            desc = "Volume limit of the fill/clone commands",
+            category = RuleCategory.CREATIVE,
+            options = {"32768", "250000", "1000000"},
+            validator = NonNegativeValidator.class
+    )
+    @RuleDefaults.Creative("1000000")
+    public static int fillLimit = 32768;
+
+    @Rule(
+            desc = "Determines whether clone sends block updates",
+            category = RuleCategory.CREATIVE
+    )
+    public static boolean fillUpdates = true;
+
 	@Rule(
 			desc = "Enables instant execution of scheduled ticks for liquids",
 			category = {RuleCategory.CREATIVE, RuleCategory.FEATURE}
