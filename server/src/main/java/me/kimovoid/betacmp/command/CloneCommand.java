@@ -61,7 +61,8 @@ public class CloneCommand extends Command {
 
                 if (sourceBox.minY >= 0 && sourceBox.maxY < 256 && destBox.minY >= 0 && destBox.maxY < 256) {
                     World world = p.world;
-                    if (world.isAreaLoaded(sourceBox.minX, sourceBox.minY, sourceBox.minZ, sourceBox.maxX, sourceBox.maxY, sourceBox.maxZ) && world.isAreaLoaded(destBox.minX, destBox.minY, destBox.minZ, destBox.maxX, destBox.maxY, destBox.maxZ)) {
+                    if (world.isAreaLoaded(sourceBox.minX, sourceBox.minY, sourceBox.minZ, sourceBox.maxX, sourceBox.maxY, sourceBox.maxZ)
+							&& world.isAreaLoaded(destBox.minX, destBox.minY, destBox.minZ, destBox.maxX, destBox.maxY, destBox.maxZ)) {
                         boolean bl2 = false;
                         if (args.length >= 10) {
                             if (args[9].equals("masked")) {
@@ -89,20 +90,20 @@ public class CloneCommand extends Command {
                                 for (int x = sourceBox.minX; x <= sourceBox.maxX; ++x) {
                                     BlockPos src = new BlockPos(x, y, z);
                                     BlockPos dest = new BlockPos(x + translate.x, y + translate.y, z + translate.z);
-                                    int block = world.getBlock(x, y, z);
+                                    int blockId = world.getBlock(x, y, z);
                                     int meta = world.getBlockMetadata(x, y, z);
-                                    if ((!bl2 || block != 0) && (filterBlock == -1 || block == filterBlock && (filterMeta < 0 || meta == filterMeta))) {
-                                        BlockEntity blockEntity = world.getBlockEntity(x, y, z);
-                                        Block b = Block.BY_ID[block];
+                                    if ((!bl2 || blockId != 0) && (filterBlock == -1 || blockId == filterBlock && (filterMeta < 0 || meta == filterMeta))) {
+										BlockEntity blockEntity = world.getBlockEntity(x, y, z);
+                                        Block b = Block.BY_ID[blockId];
                                         if (blockEntity != null) {
                                             NbtCompound compoundTag = new NbtCompound();
                                             blockEntity.writeNbt(compoundTag);
-                                            list2.add(new BlockInfo(dest, b, meta, compoundTag));
-                                        } else if (!b.isOpaqueCube() && !b.isFullCube()) {
-                                            list3.add(new BlockInfo(dest, b, meta, null));
+                                            list2.add(new BlockInfo(dest, blockId, meta, compoundTag));
+                                        } else if (blockId == 0 || (!b.isOpaqueCube() && !b.isFullCube())) {
+                                            list3.add(new BlockInfo(dest, blockId, meta, null));
                                             linkedList.addFirst(src);
                                         } else {
-                                            list1.add(new BlockInfo(dest, b, meta, null));
+                                            list1.add(new BlockInfo(dest, blockId, meta, null));
                                             linkedList.addLast(src);
                                         }
                                     }
@@ -150,7 +151,7 @@ public class CloneCommand extends Command {
 
                         while (iter.hasNext()) {
                             info = iter.next();
-                            if (world.setBlockWithMetadata(info.pos.x, info.pos.y, info.pos.z, info.block.id, info.metadata)) {
+                            if (world.setBlockWithMetadata(info.pos.x, info.pos.y, info.pos.z, info.blockId, info.metadata)) {
                                 ++volume;
                             }
                         }
@@ -165,7 +166,7 @@ public class CloneCommand extends Command {
                                 blockEntity.readNbt(info.nbt);
                                 blockEntity.markDirty();
                             }
-                            world.setBlockWithMetadata(info.pos.x, info.pos.y, info.pos.z, info.block.id, info.metadata);
+                            world.setBlockWithMetadata(info.pos.x, info.pos.y, info.pos.z, info.blockId, info.metadata);
                         }
 
                         if (Settings.fillUpdates) {
@@ -173,7 +174,7 @@ public class CloneCommand extends Command {
 
                             while (iter.hasNext()) {
                                 info = iter.next();
-                                world.updateNeighbors(info.pos.x, info.pos.y, info.pos.z, info.block.id);
+                                world.updateNeighbors(info.pos.x, info.pos.y, info.pos.z, info.blockId);
                             }
 
                             if (world instanceof ServerWorldHelper) {
@@ -207,13 +208,13 @@ public class CloneCommand extends Command {
 
     static class BlockInfo {
         public final BlockPos pos;
-        public final Block block;
+        public final int blockId;
         public final int metadata;
         public final NbtCompound nbt;
 
-        public BlockInfo(BlockPos p, Block b, int m, NbtCompound n) {
+        public BlockInfo(BlockPos p, int b, int m, NbtCompound n) {
             this.pos = p;
-            this.block = b;
+            this.blockId = b;
             this.metadata = m;
             this.nbt = n;
         }
