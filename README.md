@@ -29,6 +29,16 @@ You can set rules with the `/rule` command, which will print all available subco
 <br>The easiest way to change a rule is `/rule <rule> <value>`.
 <br>If you want to change it permanently, use `/rule setDefault <rule> <value>`.
 
+`fillLimit`
+* Volume limit of the fill/clone commands
+* Type: `int`
+* Default: `32768`
+
+`fillUpdates`
+* Determines whether clone sends block updates
+* Type: `boolean`
+* Default: `true`
+
 `disableRedstoneRandomTick`
 * Disables the random ticking of redstone torches
 * Type: `boolean`
