@@ -29,16 +29,6 @@ You can set rules with the `/rule` command, which will print all available subco
 <br>The easiest way to change a rule is `/rule <rule> <value>`.
 <br>If you want to change it permanently, use `/rule setDefault <rule> <value>`.
 
-`disableLiquidRandomTick`
-* Disables the random ticking of liquid blocks.
-* Type: `boolean`
-* Default: `false`
-
-`disableRailRandomTick`
-* Disables the random ticking of detector rails.
-* Type: `boolean`
-* Default: `false`
-
 `fillLimit`
 * Volume limit of the fill/clone commands
 * Type: `int`
@@ -49,14 +39,29 @@ You can set rules with the `/rule` command, which will print all available subco
 * Type: `boolean`
 * Default: `true`
 
-`liquidInstantTick`
-* Enables instant execution of ticks scheduled by liquid blocks.
+`disableRedstoneRandomTick`
+* Disables the random ticking of redstone torches
+* Type: `boolean`
+* Default: `false`
+
+`disableRailRandomTick`
+* Disables the random ticking of detector rails.
 * Type: `boolean`
 * Default: `false`
 
 `railActivatedOnPlaced`
 * Makes detector rails activated by default when placed by a player.
 * This should be used together with `disableRailRandomTick` so that detector rails cannot deactivate randomly. 
+* Type: `boolean`
+* Default: `false`
+
+`redstoneInstantTick`
+* Enables instant execution of scheduled ticks for repeaters and redstone torches
+* Type: `boolean`
+* Default: `false`
+
+`liquidInstantTick`
+* Enables instant execution of ticks scheduled by liquid blocks.
 * Type: `boolean`
 * Default: `false`
 
